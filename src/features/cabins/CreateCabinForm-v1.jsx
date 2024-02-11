@@ -11,12 +11,15 @@ import Textarea from "../../ui/Textarea";
 import { createCabin } from "../../services/apiCabins";
 import FormRow from "../../ui/FormRow";
 
-function CreateCabinForm({ cabinToEdit = {} }) {
+const Label = styled.label`
+  font-weight: 500;
+`;
+
+function CreateCabinForm() {
   const { register, handleSubmit, reset, getValues, formState } = useForm();
   const { errors } = formState;
 
   const queryClient = useQueryClient();
-  const { id: editId, ...editValues } = cabinToEdit;
 
   const { mutate, isLoading: isCreating } = useMutation({
     mutationFn: createCabin,
